@@ -1,0 +1,18 @@
+{
+  "name": "Atelier plaidoyer — 15 outils vers le changement",
+  "short_name": "Plaidoyer",
+  "description": "Poste de travail du plaidoyer citoyen : guide méthodologique et ateliers à remplir, hors-ligne.",
+  "lang": "fr-BE",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#E9E6DB",
+  "theme_color": "#15161C",
+  "categories": ["education", "productivity", "utilities"],
+  "icons": [
+    { "src": "./icons/icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

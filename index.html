@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Atelier plaidoyer — 15 outils vers le changement</title>
+<meta name="description" content="Poste de travail du plaidoyer citoyen : les 15 outils du guide, à lire et à remplir. Fonctionne hors-ligne.">
+<meta name="theme-color" content="#15161C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Plaidoyer">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/icone-192.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="btn" data-action="menu" aria-label="Ouvrir le menu">☰ Outils</button>
+  <a href="#/" class="display" style="text-decoration:none">Atelier plaidoyer</a>
+</header>
+
+<div class="drawer-fond" data-action="fermer-menu"></div>
+
+<div class="app">
+  <nav class="rail" aria-label="Navigation des outils"></nav>
+  <main class="main" id="principal"></main>
+</div>
+
+<button class="btn plein" id="btn-installer" data-action="installer" hidden
+  style="position:fixed;right:18px;bottom:18px;z-index:450;box-shadow:var(--shadow)">Installer l’application</button>
+
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
