@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="clair">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Atelier plaidoyer — 22 outils vers le changement</title>
+<meta name="description" content="Poste de travail du plaidoyer citoyen : les outils du guide, à lire et à remplir. Hors-ligne, sans compte, sans serveur.">
+<meta name="theme-color" content="#E8E5DB">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Plaidoyer">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icone.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icons/icone-192.png">
+<link rel="preload" href="./assets/fonts/bricolage-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/publicsans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+
+<a class="saut" href="#principal">Aller au contenu</a>
+
+<div class="coque">
+  <aside class="flanc" aria-label="Navigation"></aside>
+
+  <div class="colonne">
+    <header class="entete">
+      <nav class="fil-ariane" aria-label="Fil d’Ariane"></nav>
+      <div class="droite">
+        <span class="etat-sauve" role="status" aria-live="polite"></span>
+        <button class="bouton discret" data-agir="palette" aria-label="Rechercher (Ctrl+K)" title="Rechercher — Ctrl+K">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+          <kbd style="border:0;background:none;padding:0">Ctrl K</kbd>
+        </button>
+        <button class="bouton discret icone" id="btn-installer" data-agir="installer" hidden
+          title="Installer l’application" aria-label="Installer l’application">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"
+            stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0-4-4m4 4 4-4M4 19h16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="main" id="principal" tabindex="-1"></main>
+  </div>
+</div>
+
+<nav class="barre-mobile" aria-label="Navigation principale"></nav>
+
+<dialog class="palette" id="palette" aria-label="Recherche">
+  <input type="search" id="palette-champ" placeholder="Chercher un outil, une note, une action…"
+    autocomplete="off" spellcheck="false" aria-label="Rechercher">
+  <div class="palette-resultats" id="palette-resultats" role="listbox"></div>
+  <div class="palette-pied">
+    <span><kbd>↑</kbd> <kbd>↓</kbd> naviguer</span>
+    <span><kbd>Entrée</kbd> ouvrir</span>
+    <span><kbd>Échap</kbd> fermer</span>
+  </div>
+</dialog>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
