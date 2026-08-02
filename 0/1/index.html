@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STOP Arizona — Défense du modèle social belge</title>
+<meta name="description" content="140.000 personnes exclues du chômage depuis janvier 2026. Le 28 novembre, la Cour constitutionnelle tranche. Comprendre, vérifier, agir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:ital,wght@0,400;0,600;0,800;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papier:#F5F4EF;
+  --encre:#17161A;
+  --rouge:#B90F23;
+  --rouge-vif:#D8112A;
+  --jaune:#FFD500;
+  --regle:#CFCCC2;
+  --gris:#5B5952;
+  --max:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+body{
+  background:var(--papier);
+  color:var(--encre);
+  font-family:'Public Sans',system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--jaune);color:var(--encre)}
+a{color:var(--rouge);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--rouge-vif)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--rouge);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:'IBM Plex Mono',monospace}
+.hl{background:linear-gradient(transparent 55%, var(--jaune) 55%, var(--jaune) 92%, transparent 92%);padding:0 .1em}
+
+/* ---------- Bandeau ---------- */
+.bandeau{
+  background:var(--encre);color:var(--papier);
+  font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;
+  padding:9px 0;text-transform:uppercase;
+}
+.bandeau .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bandeau span b{color:var(--jaune);font-weight:600}
+
+/* ---------- Header ---------- */
+header.site{
+  border-bottom:3px solid var(--encre);
+  padding:18px 0;
+}
+header.site .wrap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-family:'Anton',sans-serif;font-size:clamp(22px,3vw,28px);letter-spacing:.02em;text-transform:uppercase}
+.logo em{font-style:normal;color:var(--rouge)}
+nav.top{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;font-weight:600}
+nav.top a{color:var(--encre);text-decoration:none;border-bottom:2px solid transparent}
+nav.top a:hover{border-bottom-color:var(--rouge)}
+
+/* ---------- Hero ---------- */
+.hero{padding:64px 0 48px;border-bottom:3px solid var(--encre);position:relative;overflow:hidden}
+.hero h1{
+  font-family:'Anton',sans-serif;text-transform:uppercase;
+  font-size:clamp(44px,8.5vw,104px);
+  line-height:.96;letter-spacing:.01em;max-width:15ch;
+}
+.hero h1 .barre{color:var(--rouge);position:relative;display:inline-block}
+.hero h1 .barre::after{
+  content:"";position:absolute;left:-2%;top:52%;width:104%;height:.09em;
+  background:var(--encre);transform:rotate(-1.5deg);
+}
+.hero .sous{
+  margin-top:28px;font-size:clamp(18px,2.4vw,23px);max-width:34ch;font-weight:600;line-height:1.45;
+}
+.hero .sous .mono{font-weight:600}
+.compteur{
+  margin-top:42px;display:inline-flex;align-items:stretch;
+  border:3px solid var(--encre);background:#fff;
+  box-shadow:8px 8px 0 var(--encre);
+}
+.compteur .j{
+  background:var(--rouge);color:#fff;font-family:'Anton',sans-serif;
+  font-size:clamp(42px,7vw,72px);line-height:1;padding:18px 22px;
+  display:flex;align-items:center;letter-spacing:.02em;
+}
+.compteur .txt{padding:14px 22px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.compteur .txt strong{font-size:15px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.compteur .txt span{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gris)}
+.hero .note-source{margin-top:18px;font-size:13px;color:var(--gris)}
+
+/* ---------- Chiffres ---------- */
+.chiffres{border-bottom:3px solid var(--encre);background:#fff}
+.chiffres .grille{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.chiffre{
+  padding:34px 26px;border-right:1px solid var(--regle);
+}
+.chiffre:last-child{border-right:none}
+.chiffre .val{font-family:'Anton',sans-serif;font-size:clamp(34px,4.5vw,52px);line-height:1}
+.chiffre .lab{margin-top:10px;font-size:14px;line-height:1.45}
+.chiffre .src{margin-top:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gris);text-transform:uppercase;letter-spacing:.05em}
+@media(max-width:860px){.chiffres .grille{grid-template-columns:1fr 1fr}.chiffre{border-bottom:1px solid var(--regle)}.chiffre:nth-child(even){border-right:none}}
+@media(max-width:480px){.chiffres .grille{grid-template-columns:1fr}.chiffre{border-right:none}}
+
+/* ---------- Sections ---------- */
+section{padding:72px 0}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--rouge);font-weight:600;margin-bottom:14px;
+}
+h2{
+  font-family:'Anton',sans-serif;text-transform:uppercase;
+  font-size:clamp(30px,4.5vw,48px);line-height:1.05;letter-spacing:.01em;
+  max-width:22ch;margin-bottom:28px;
+}
+.deuxcol{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+@media(max-width:820px){.deuxcol{grid-template-columns:1fr}}
+.recit p{margin-bottom:18px;max-width:62ch}
+.recit p strong{font-weight:800}
+.encadre{
+  border:3px solid var(--encre);background:#fff;padding:26px;
+  box-shadow:8px 8px 0 var(--jaune);
+}
+.encadre h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:20px;margin-bottom:12px}
+.encadre p{font-size:15px;margin-bottom:12px}
+.encadre p:last-child{margin-bottom:0}
+.encadre .mono{font-size:13px;color:var(--gris)}
+
+/* ---------- Test 4 questions ---------- */
+#test{background:var(--encre);color:var(--papier)}
+#test .eyebrow{color:var(--jaune)}
+#test h2{color:#fff}
+#test .intro{max-width:64ch;margin-bottom:44px;color:#D9D7CF}
+.questions{display:grid;gap:0;border-top:1px solid #3A3940}
+.question{
+  display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:start;
+  padding:30px 0;border-bottom:1px solid #3A3940;
+}
+.question .num{
+  font-family:'Anton',sans-serif;font-size:40px;line-height:1;color:#4C4B52;
+}
+.question h3{font-size:20px;font-weight:800;margin-bottom:8px;color:#fff}
+.question p{font-size:15.5px;color:#C9C7BF;max-width:56ch}
+.tampon{
+  font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  border:3px solid;padding:8px 14px;font-size:15px;line-height:1.1;
+  transform:rotate(-4deg);align-self:center;white-space:nowrap;
+  border-radius:3px;
+}
+.tampon.rouge{color:var(--rouge-vif);border-color:var(--rouge-vif)}
+.tampon.jaune{color:var(--jaune);border-color:var(--jaune)}
+.verdict-final{
+  margin-top:40px;border:3px solid var(--jaune);padding:26px;
+  font-size:17px;color:#fff;max-width:70ch;
+}
+.verdict-final b{color:var(--jaune)}
+@media(max-width:680px){
+  .question{grid-template-columns:1fr}
+  .question .num{font-size:28px}
+  .tampon{justify-self:start;transform:rotate(-3deg)}
+}
+
+/* ---------- Chronologie ---------- */
+#chrono{background:#fff;border-top:3px solid var(--encre);border-bottom:3px solid var(--encre)}
+.timeline{border-left:3px solid var(--encre);margin-left:8px;padding-left:0;list-style:none}
+.timeline li{position:relative;padding:0 0 30px 34px;max-width:66ch}
+.timeline li::before{
+  content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;
+  background:var(--papier);border:3px solid var(--encre);border-radius:50%;
+}
+.timeline li.fort::before{background:var(--rouge)}
+.timeline .date{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--rouge)}
+.timeline h3{font-size:17px;font-weight:800;margin:4px 0 4px}
+.timeline p{font-size:15px;color:#3E3D38}
+
+/* ---------- Revendications ---------- */
+.revs{display:grid;gap:14px;counter-reset:rev}
+.rev{
+  background:#fff;border:2px solid var(--encre);padding:20px 22px 20px 74px;position:relative;
+}
+.rev::before{
+  counter-increment:rev;content:counter(rev);
+  position:absolute;left:0;top:0;bottom:0;width:52px;
+  background:var(--encre);color:var(--jaune);
+  font-family:'Anton',sans-serif;font-size:26px;
+  display:flex;align-items:center;justify-content:center;
+}
+.rev h3{font-size:17px;font-weight:800;margin-bottom:4px}
+.rev p{font-size:15px;color:#3E3D38}
+.argent{margin-top:36px}
+.argent h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:22px;margin-bottom:14px}
+.argent ul{list-style:none;display:grid;gap:10px}
+.argent li{padding-left:26px;position:relative;font-size:15.5px;max-width:70ch}
+.argent li::before{content:"→";position:absolute;left:0;color:var(--rouge);font-weight:800}
+
+/* ---------- Échéances ---------- */
+#automne{background:var(--rouge);color:#fff}
+#automne .eyebrow{color:var(--jaune)}
+#automne h2{color:#fff}
+.echeances{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.echeances{grid-template-columns:1fr}}
+.echeance{border:3px solid #fff;padding:24px;background:rgba(0,0,0,.12)}
+.echeance .date{font-family:'Anton',sans-serif;font-size:30px;line-height:1.1;color:var(--jaune)}
+.echeance h3{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin:10px 0 8px}
+.echeance p{font-size:14.5px;color:#FBE9EA}
+
+/* ---------- Agir ---------- */
+.agir-grille{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+@media(max-width:680px){.agir-grille{grid-template-columns:1fr}}
+.agir-c{border:2px solid var(--encre);background:#fff;padding:22px}
+.agir-c h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:19px;margin-bottom:8px}
+.agir-c p{font-size:15px;color:#3E3D38}
+.hashtags{margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--gris)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--encre);color:#BEBCB4;padding:44px 0 56px;font-size:13.5px}
+footer h4{color:#fff;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-family:'IBM Plex Mono',monospace}
+footer .cols{display:grid;grid-template-columns:1.2fr 1fr;gap:40px}
+@media(max-width:680px){footer .cols{grid-template-columns:1fr}}
+footer a{color:#E8E6DE}
+footer ul{list-style:none;display:grid;gap:8px}
+footer .disclaimer{margin-top:32px;padding-top:20px;border-top:1px solid #3A3940;font-size:12.5px;color:#8B8981;max-width:80ch}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.vu{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="bandeau">
+  <div class="wrap">
+    <span>Plaidoyer citoyen — mise à jour du <b>2 août 2026</b></span>
+    <span>Arrêt de la Cour constitutionnelle attendu au plus tard le <b>28 novembre 2026</b></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="logo">Stop <em>Arizona</em></div>
+    <nav class="top" aria-label="Navigation principale">
+      <a href="#faits">Les faits</a>
+      <a href="#test">Le test</a>
+      <a href="#chrono">2026</a>
+      <a href="#demandes">Nos demandes</a>
+      <a href="#agir">Agir</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="haut">
+  <div class="wrap">
+    <h1>Ils ont promis<br>qu'un <span class="barre">tiers</span><br>s'en sortirait.</h1>
+    <p class="sous">Depuis janvier 2026, <span class="hl">plus de 140&#8239;000 personnes</span> ont perdu leurs allocations de chômage. <span class="mono">40,8&#8239;%</span> ont dû frapper à la porte du CPAS. Plus d'une sur deux à Charleroi.</p>
+
+    <div class="compteur" role="timer" aria-label="Compte à rebours avant l'arrêt de la Cour constitutionnelle">
+      <div class="j mono" id="jours">J−…</div>
+      <div class="txt">
+        <strong>Avant l'arrêt de la Cour constitutionnelle</strong>
+        <span>Réforme du chômage · échéance légale : 28 novembre 2026</span>
+      </div>
+    </div>
+    <p class="note-source">Sources : SPP Intégration sociale (rapports mensuels 2026) · ONEM · Cour constitutionnelle, arrêt du 15 janvier 2026.</p>
+  </div>
+</section>
+
+<div class="chiffres" id="faits">
+  <div class="wrap" style="padding:0">
+    <div class="grille">
+      <div class="chiffre reveal">
+        <div class="val"><span class="hl">140&#8239;000+</span></div>
+        <div class="lab">personnes exclues du chômage entre janvier et juillet 2026 — et ce n'est pas fini : les exclusions continuent jusqu'en juillet 2027.</div>
+        <div class="src">ONEM · RTBF</div>
+      </div>
+      <div class="chiffre reveal">
+        <div class="val"><span class="hl">40,8&#8239;%</span></div>
+        <div class="lab">des exclus ont basculé vers les CPAS sur les cinq premiers mois — le gouvernement en annonçait «&#8239;un tiers&#8239;».</div>
+        <div class="src">SPP Intégration sociale</div>
+      </div>
+      <div class="chiffre reveal">
+        <div class="val"><span class="hl">709 M€</span></div>
+        <div class="lab">le vrai coût pour les CPAS d'ici 2029 — 360 millions de plus que ce que le fédéral a prévu de compenser.</div>
+        <div class="src">Cour des comptes</div>
+      </div>
+      <div class="chiffre reveal">
+        <div class="val"><span class="hl">10 Md€</span></div>
+        <div class="lab">la nouvelle cure d'austérité décidée le 10 juillet 2026. Verdict du conclave budgétaire&#8239;: le 13 octobre.</div>
+        <div class="src">Gouvernement fédéral</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="recit">
+  <div class="wrap deuxcol">
+    <div class="recit reveal">
+      <p class="eyebrow">Ce qui se passe</p>
+      <h2>Ce n'est pas une réforme. C'est un transfert.</h2>
+      <p>Depuis 1944, la Belgique repose sur un pacte&#8239;: quand vous perdez votre emploi, l'assurance chômage — que vous avez financée en travaillant — vous évite de tomber dans le vide. Le gouvernement Arizona a mis fin à cette exception belge&#8239;: depuis le 1er janvier 2026, les allocations sont <strong>limitées à 24 mois</strong>, point final.</p>
+      <p>La promesse officielle&#8239;? Un tiers des exclus retrouverait un emploi, un tiers irait au CPAS, un tiers «&#8239;disparaîtrait des radars&#8239;». La réalité, mesurée par les propres services de l'État&#8239;: <strong>40,8&#8239;% basculent vers les CPAS</strong>, et la Banque nationale n'attendait que 10 à 20&#8239;% de retours à l'emploi. Supprimer une allocation ne soigne pas, ne rajeunit pas, ne forme pas.</p>
+      <p>Le résultat n'est pas une économie&#8239;: c'est une <strong>dette transférée aux communes</strong> — 709 millions d'euros selon la Cour des comptes — et une crise transférée aux familles&#8239;: perte du statut BIM, renoncement aux soins, semaines sans aucun revenu entre le chômage et le CPAS.</p>
+    </div>
+    <aside class="encadre reveal">
+      <h3>Qui est concerné&#8239;?</h3>
+      <p>Des travailleurs de 50-55 ans victimes de restructurations. Des malades que le marché du travail ne reprend pas. Des mères seules aux carrières hachées. Les personnes malades de longue durée — plus de 500&#8239;000 — sont la cible suivante, avec des sanctions de −2,5&#8239;% sur leurs indemnités.</p>
+      <p class="mono">«&#8239;Aujourd'hui ce sont les chômeurs de longue durée. Demain ce pourrait être vous, votre parent, votre enfant.&#8239;»</p>
+    </aside>
+  </div>
+</section>
+
+<section id="test">
+  <div class="wrap">
+    <p class="eyebrow">Le rendez-vous du 28 novembre</p>
+    <h2>Les 4 questions que la Cour devra trancher</h2>
+    <p class="intro reveal">L'article 23 de la Constitution interdit à l'État de faire reculer significativement la protection sociale sans justification sérieuse et proportionnée. C'est le principe de <em>standstill</em>. Pour juger la réforme du chômage, la Cour constitutionnelle appliquera un test en quatre étapes. Voici où en est chacune.</p>
+    <div class="questions">
+      <div class="question reveal">
+        <div class="num" aria-hidden="true">1</div>
+        <div>
+          <h3>Y a-t-il un recul important de la protection&#8239;?</h3>
+          <p>Plus de 140&#8239;000 personnes privées de tout revenu de remplacement, avec perte en cascade du statut BIM et des tarifs sociaux. Le Conseil d'État et l'Institut fédéral des droits humains l'ont constaté noir sur blanc.</p>
+        </div>
+        <div class="tampon rouge">Établi</div>
+      </div>
+      <div class="question reveal">
+        <div class="num" aria-hidden="true">2</div>
+        <div>
+          <h3>Le gouvernement a-t-il un motif d'intérêt général&#8239;?</h3>
+          <p>Il invoque le budget et l'Europe. Recevable en principe — mais affaibli&#8239;: des alternatives moins destructrices existent (fiscalité du patrimoine, fraude fiscale, provisions budgétaires non affectées) et n'ont pas été examinées.</p>
+        </div>
+        <div class="tampon jaune">Fragile</div>
+      </div>
+      <div class="question reveal">
+        <div class="num" aria-hidden="true">3</div>
+        <div>
+          <h3>La mesure atteint-elle son objectif&#8239;?</h3>
+          <p>Promesse&#8239;: un tiers de retours à l'emploi. Prévision de la Banque nationale&#8239;: 10 à 20&#8239;%. Réalité mesurée&#8239;: 40,8&#8239;% de basculements vers les CPAS. Le précédent de 2018 avait déjà montré un effet emploi non significatif et 39&#8239;% de précarisation.</p>
+        </div>
+        <div class="tampon rouge">Non démontré</div>
+      </div>
+      <div class="question reveal">
+        <div class="num" aria-hidden="true">4</div>
+        <div>
+          <h3>Le sacrifice est-il proportionné au bénéfice&#8239;?</h3>
+          <p>L'«&#8239;économie&#8239;» fédérale coûte 709 millions aux CPAS et précipite des dizaines de milliers de familles sous le seuil de pauvreté. Et les juges l'ont déjà dit&#8239;: l'existence du CPAS comme filet de secours ne justifie pas la destruction d'un droit d'assurance.</p>
+        </div>
+        <div class="tampon rouge">Haut risque</div>
+      </div>
+    </div>
+    <div class="verdict-final reveal">
+      <b>Le 28 novembre au plus tard</b>, la Cour dira si un gouvernement peut précipiter 140&#8239;000 personnes sous le seuil de pauvreté pour un objectif d'emploi qu'il ne peut pas démontrer. Le droit, les chiffres et les précédents disent non. Et si la Cour tranche autrement, le combat continue devant le Comité européen des droits sociaux.
+    </div>
+  </div>
+</section>
+
+<section id="chrono">
+  <div class="wrap">
+    <p class="eyebrow">Chronologie</p>
+    <h2>2026, l'année où tout a basculé</h2>
+    <ul class="timeline">
+      <li class="fort reveal">
+        <span class="date">1er janvier</span>
+        <h3>Première vague d'exclusions</h3>
+        <p>La limitation à 24 mois entre en vigueur. Premières personnes exclues&#8239;: celles au chômage depuis plus de 20 ans.</p>
+      </li>
+      <li class="reveal">
+        <span class="date">15 janvier</span>
+        <h3>La Cour refuse de suspendre — mais le fond reste à juger</h3>
+        <p>La demande de suspension d'urgence des 14 organisations est rejetée. La Cour précise que cela ne préjuge en rien de l'arrêt d'annulation, attendu au plus tard le 28 novembre.</p>
+      </li>
+      <li class="fort reveal">
+        <span class="date">12 mars</span>
+        <h3>100&#8239;000 personnes dans les rues de Bruxelles</h3>
+        <p>La manifestation nationale double l'objectif fixé. Suivront la grève générale du 29 avril et la journée de blocages du 12 mai.</p>
+      </li>
+      <li class="reveal">
+        <span class="date">1er mars — 1er avril</span>
+        <h3>Deuxième et troisième vagues</h3>
+        <p>Les personnes au chômage depuis 8 à 20 ans, puis depuis 2 à 8 ans, perdent leurs droits.</p>
+      </li>
+      <li class="reveal">
+        <span class="date">28 mai</span>
+        <h3>La réforme des pensions passe en force</h3>
+        <p>Malus, 156 jours par an, fin de la péréquation — malgré l'avis cinglant du Conseil d'État (rétroactivité, discrimination des femmes). Le «&#8239;Procès pension&#8239;» est lancé.</p>
+      </li>
+      <li class="fort reveal">
+        <span class="date">1er juillet</span>
+        <h3>Quatrième vague — et le cap des 140&#8239;000 franchi</h3>
+        <p>Les personnes au chômage depuis plus d'un an sont touchées à leur tour. Le ministre de l'Emploi maintient son récit des «&#8239;33&#8239;% de remise au travail&#8239;»&#8239;; les chiffres officiels disent 40,8&#8239;% de basculements vers les CPAS.</p>
+      </li>
+      <li class="reveal">
+        <span class="date">10 juillet</span>
+        <h3>10 milliards d'austérité en plus</h3>
+        <p>Face au dérapage budgétaire, le gouvernement s'accorde sur un effort supplémentaire de 10 milliards d'ici 2029. Conclave fin septembre, verdict le 13 octobre.</p>
+      </li>
+      <li class="reveal">
+        <span class="date">22 juillet</span>
+        <h3>Le front commun annonce la riposte</h3>
+        <p>FGTB, CSC et CGSLB «&#8239;repartiront à l'offensive après la pause estivale&#8239;»&#8239;: action musclée en septembre, grande action en octobre, grève générale sur la table.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="demandes">
+  <div class="wrap">
+    <p class="eyebrow">Nos demandes</p>
+    <h2>Cinq exigences, pas une de plus</h2>
+    <div class="revs">
+      <div class="rev reveal">
+        <h3>Un moratoire immédiat sur les exclusions</h3>
+        <p>Tant que la Cour constitutionnelle n'a pas tranché, aucune famille supplémentaire ne doit basculer.</p>
+      </div>
+      <div class="rev reveal">
+        <h3>La compensation intégrale des CPAS</h3>
+        <p>100&#8239;% du surcoût réel — 709 millions d'euros selon la Cour des comptes — personnel compris. Pas des forfaits symboliques.</p>
+      </div>
+      <div class="rev reveal">
+        <h3>L'abandon du bonus-malus qui punit les communes pauvres</h3>
+        <p>On ne pénalise pas un CPAS parce que sa commune compte plus de personnes en difficulté.</p>
+      </div>
+      <div class="rev reveal">
+        <h3>La fin des sanctions contre les malades</h3>
+        <p>Retrait de la réduction de 2,5&#8239;% des indemnités. On accompagne les malades, on ne les punit pas.</p>
+      </div>
+      <div class="rev reveal">
+        <h3>La réaffectation du «&#8239;chèque en blanc&#8239;»</h3>
+        <p>La Cour des comptes a identifié des provisions et fonds non affectés de plusieurs milliards, à la seule discrétion du gouvernement. Qu'ils financent les CPAS avant toute nouvelle coupe.</p>
+      </div>
+    </div>
+    <div class="argent reveal">
+      <h3>«&#8239;Mais où trouver l'argent&#8239;?&#8239;» — Notre réponse</h3>
+      <ul>
+        <li>Le contre-budget du think tank Minerva chiffre à environ 40 milliards d'euros ce qui peut être mobilisé sans toucher aux plus modestes.</li>
+        <li>Une taxe des millionnaires rapporterait 17 milliards d'euros selon les chiffrages disponibles.</li>
+        <li>Le modèle budgétaire européen lui-même est contesté par les économistes&#8239;: l'austérité est un choix politique, pas une fatalité mathématique.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="automne">
+  <div class="wrap">
+    <p class="eyebrow">Les trois rendez-vous</p>
+    <h2>L'automne qui décidera de tout</h2>
+    <div class="echeances">
+      <div class="echeance reveal">
+        <div class="date">13 octobre</div>
+        <h3>Le conclave budgétaire</h3>
+        <p>Le gouvernement présente comment il trouvera 10 milliards. La sécurité sociale est à nouveau dans le viseur. Grande action syndicale annoncée.</p>
+      </div>
+      <div class="echeance reveal">
+        <div class="date">Automne</div>
+        <h3>Le «&#8239;Procès pension&#8239;»</h3>
+        <p>Le malus pension devant la Cour constitutionnelle, armé de l'avis du Conseil d'État&#8239;: rétroactivité et discrimination des femmes.</p>
+      </div>
+      <div class="echeance reveal">
+        <div class="date">28 novembre</div>
+        <h3>L'arrêt sur le chômage</h3>
+        <p>Au plus tard à cette date, la Cour dit si la réforme viole la Constitution. En jeu&#8239;: l'annulation, et la question de l'indemnisation des exclus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agir">
+  <div class="wrap">
+    <p class="eyebrow">Agir</p>
+    <h2>Quatre façons de peser, dès maintenant</h2>
+    <div class="agir-grille">
+      <div class="agir-c reveal">
+        <h3>Témoigner</h3>
+        <p>Vous êtes exclu·e ou menacé·e&#8239;? Votre histoire compte — littéralement&#8239;: chaque témoignage documenté alimente le dossier devant la Cour et les médias. Objectif&#8239;: 1&#8239;000 témoignages d'ici décembre.</p>
+      </div>
+      <div class="agir-c reveal">
+        <h3>Faire valoir vos droits</h3>
+        <p>Le revenu d'intégration n'est pas limité dans le temps. Ne restez pas sans rien&#8239;: introduisez votre demande au CPAS de votre commune dès le mois qui précède la fin de vos allocations, et faites-vous accompagner (syndicat, permanences juridiques gratuites).</p>
+      </div>
+      <div class="agir-c reveal">
+        <h3>Se mobiliser</h3>
+        <p>Rejoignez les actions de la rentrée&#8239;: septembre (action nationale), octobre (grande action lors de la déclaration de politique fédérale), novembre (mobilisation autour de l'arrêt de la Cour).</p>
+      </div>
+      <div class="agir-c reveal">
+        <h3>Interpeller vos élus</h3>
+        <p>Vos député·e·s ont voté ces mesures ou les soutiendront au budget 2027. Écrivez-leur, interpellez-les en séance communale, demandez-leur de rendre des comptes sur les chiffres réels.</p>
+      </div>
+    </div>
+    <p class="hashtags">#StopArizona&nbsp;&nbsp;#Article23&nbsp;&nbsp;#DigniteHumaine</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>D'où viennent nos chiffres</h4>
+        <ul>
+          <li><a href="https://www.rtbf.be/article/exclusions-du-chomage-combien-de-personnes-se-tournent-vers-le-cpas-pres-de-chez-vous-decouvrez-le-sur-notre-carte-11755346" target="_blank" rel="noopener">RTBF — Exclusions du chômage&#8239;: la carte des basculements vers les CPAS</a></li>
+          <li><a href="https://www.levif.be/belgique/politique/reforme-du-chomage-la-facture-pour-les-cpas-plus-lourde-que-prevu-selon-la-cour-des-comptes/" target="_blank" rel="noopener">Le Vif — Le rapport de la Cour des comptes (709 M€)</a></li>
+          <li><a href="https://www.uvcw.be/insertion/actus/art-9926" target="_blank" rel="noopener">UVCW — L'arrêt de la Cour constitutionnelle du 15 janvier 2026</a></li>
+          <li><a href="https://www.vrt.be/vrtnws/fr/2026/07/10/budget-federal-le-gouvernement-s-accorde-sur-un-effort-de-10-m/" target="_blank" rel="noopener">VRT NWS — L'accord sur les 10 milliards</a></li>
+          <li><a href="https://www.exclusionduchomage.be/recours" target="_blank" rel="noopener">exclusionduchomage.be — Recours et soutiens</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Qui nous sommes</h4>
+        <p>Un collectif citoyen aux côtés du front commun syndical (FGTB, CSC, CGSLB) et de 14 organisations de la société civile — réseaux de lutte contre la pauvreté, Ligue des droits humains, Ligue des familles, mutualités, mouvements de femmes et de jeunes — engagés dans le recours devant la Cour constitutionnelle.</p>
+      </div>
+    </div>
+    <p class="disclaimer">Page citoyenne d'information et de plaidoyer, mise à jour le 2 août 2026. Les chiffres cités proviennent de sources publiques (SPP Intégration sociale, Cour des comptes, ONEM, Banque nationale, presse de référence)&#8239;; les estimations restent provisoires jusqu'à publication des données consolidées. Ce site ne remplace pas un conseil juridique individuel&#8239;: pour votre situation personnelle, adressez-vous à votre syndicat, à votre CPAS ou à une permanence juridique.</p>
+  </div>
+</footer>
+
+<script>
+// Compte à rebours vers l'arrêt de la Cour (28 novembre 2026)
+(function(){
+  var cible = new Date(2026, 10, 28); // 28 novembre 2026
+  var maintenant = new Date();
+  cible.setHours(0,0,0,0);
+  maintenant.setHours(0,0,0,0);
+  var jours = Math.round((cible - maintenant) / 86400000);
+  var el = document.getElementById('jours');
+  if (jours > 0) { el.textContent = 'J\u2212' + jours; }
+  else if (jours === 0) { el.textContent = 'JOUR J'; }
+  else { el.textContent = 'RENDU'; }
+})();
+
+// Révélation au défilement (désactivée si l'utilisateur préfère réduire les animations)
+(function(){
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (reduit || !('IntersectionObserver' in window)) {
+    els.forEach(function(e){ e.classList.add('vu'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('vu'); obs.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(e){ obs.observe(e); });
+})();
+</script>
+</body>
+</html>
